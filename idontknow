@@ -1,0 +1,12 @@
+npm install nexmo-cli -g
+nexmo setup 2e4c0080 74733c5c48a7cf4c
+nexmo app:create "My App" https://example.com \
+https://example.com --type=voice --keyfile=private.key
+APP_JWT="$(nexmo jwt:generate ./private.key \
+application_id=YOUR_APP_ID)"
+url -X POST https://api.nexmo.com/v1/calls\
+  -H "Authorization: Bearer "$APP_JWT\
+  -H "Content-Type: application/json"\
+  -d '{"to":[{"type": "phone","number": 17602206946}],
+      "from": {"type": "phone","number": 12345678901},
+      "answer_url":["https://nexmo-community.github.io/ncco-examples/first_call_talk.json"]}'
