@@ -1,1 +1,1 @@
-# refactored-disco
+npm install nexmo-cli -g
